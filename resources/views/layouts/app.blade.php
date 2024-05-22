@@ -1,36 +1,43 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html x-data="data()" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        @include('includes.dashboard.meta')
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <title>@yield('title') | {{ config('app.name', 'JDA Project') }}</title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @stack('before-style-dashboard')
+
+        @include('includes.dashboard.styles')
+
+        @stack('after-style-dashboard')
+
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
+    <body class="antialiased">
+        <div class="flex h-screen bg-serv-services-bg" :class="{ 'overflow-hidden': isSideMenuOpen }">
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+            @include('components.dashboard.menu.desktop')
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+            <div x-show="isSideMenuOpen" x-transition:enter="transition ease-in-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in-out duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 flex items-end bg-black bg-opacity-50 z-1 sm:items-center sm:justify-center"></div>
+
+            @include('components.dashboard.menu.mobile')
+
+            <div class="flex flex-col flex-1 w-full">
+
+                @include('components.dashboard.header')
+
+                {{-- @include('sweetalert::alert') --}}
+
+                @yield('content')
+
+            </div>
+
         </div>
+
+        @stack('before-script-dashboard')
+
+        @include('includes.dashboard.scripts')
+
+        @stack('after-script-dashboard')
     </body>
 </html>

@@ -4,7 +4,24 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.frontend.index');
+});
+Route::get('/explore', function () {
+    return view('pages.frontend.explore');
+});
+
+Route::get('/detail', function () {
+    return view('pages.frontend.detail');
+});
+
+Route::get('/member/dashboard', function () {
+    return view('pages.member.index');
+});
+Route::get('/member/service', function () {
+    return view('pages.member.services.index');
+});
+Route::get('/member/service/create', function () {
+    return view('pages.member.services.create');
 });
 
 Route::get('/dashboard', function () {
