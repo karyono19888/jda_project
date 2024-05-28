@@ -4,9 +4,12 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\UserDetail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -44,5 +47,25 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function detail_user():HasOne
+    {
+        return $this->hasOne(UserDetail::class, 'user_id');
+    }
+
+    public function products() : HasMany 
+    {
+        return $this->hasMany(Product::class,'user_id');
+    }
+
+    public function order_buyer() : HasMany 
+    {
+        return $this->hasMany(Order::class,'buyer_id');
+    }
+
+    public function order_seller() : HasMany 
+    {
+        return $this->hasMany(Order::class,'saller_id  ');
     }
 }
