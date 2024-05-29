@@ -19,7 +19,7 @@
                     <label class="block text-grey-darker text-sm mb-2" for="name">
                         Full Name
                     </label>
-                    <input class="appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 placeholder-serv-text text-xs" id="name" name="name" type="text" placeholder="Your name" required>
+                    <input class="appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 placeholder-serv-text text-xs" id="name" name="name" type="text" placeholder="Your name" required value="{{old('name')}}">
 
                     @if ($errors->has('name'))
                         <p class="text-red-500 mb-3 text-sm">{{$errors->first('name')}}</p>
@@ -30,7 +30,7 @@
                     <label class="block text-grey-darker text-sm mb-2" for="email">
                         Email
                     </label>
-                    <input class="appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 placeholder-serv-text text-xs" id="email" name="email" type="email" placeholder="name@domain.com" required>
+                    <input class="appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 placeholder-serv-text text-xs" id="email" name="email" type="email" placeholder="name@domain.com" required value="{{old('email')}}">
 
                     @if ($errors->has('email'))
                         <p class="text-red-500 mb-3 text-sm">{{$errors->first('email')}}</p>

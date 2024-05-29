@@ -12,7 +12,7 @@ class frontendController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.frontend.index');
     }
 
     /**
@@ -62,4 +62,25 @@ class frontendController extends Controller
     {
         //
     }
+
+    public function detail($id)
+    {
+        
+    }
+
+    public function explore()
+    {
+        
+    }
+
+    public function booking($id)
+    {
+        
+    }
+
+    public function detail_booking($id)
+    {
+        
+    }
+
 }

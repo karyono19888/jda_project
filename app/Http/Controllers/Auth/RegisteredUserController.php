@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserDetail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -43,8 +44,15 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
+        $detailUser             = new UserDetail;
+        $detailUser->user_id    = $user->id;
+        $detailUser->photo      = NULL;
+        $detailUser->contact_number = NULL;
+        $detailUser->biography  = NULL;
+        $detailUser->save();
+
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('front.home', absolute: false));
     }
 }
