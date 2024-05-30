@@ -49,7 +49,7 @@
                 </a>
             </li>
             <li class="relative px-6 py-3">
-                <a class="inline-flex items-center w-full text-sm font-light transition-colors duration-150 hover:text-gray-800" href="/dashboard/requests.php">
+                <a class="inline-flex items-center w-full text-sm font-light transition-colors duration-150 hover:text-gray-800" href="{{route('member.request.request_index')}}">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="2.25" y="1.25" width="19.5" height="21.5" rx="4.75" stroke="#082431" stroke-width="1.5" />
                         <rect x="11.3" y="7" width="1.4" height="10" rx="0.7" fill="#082431" />
@@ -67,7 +67,7 @@
                 </a>
             </li>
             <li class="relative px-6 py-3">
-                <a class="inline-flex items-center w-full text-sm font-light transition-colors duration-150 hover:text-gray-800" href="/dashboard/orders.php">
+                <a class="inline-flex items-center w-full text-sm font-light transition-colors duration-150 hover:text-gray-800" href="{{route('member.order.order_index')}}">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="3.25" y="2.25" width="17.5" height="19.5" rx="4.75" stroke="#082431" stroke-width="1.5" />
                         <line x1="7.75" y1="7.25" x2="10.25" y2="7.25" stroke="#082431" stroke-width="1.5" stroke-linecap="round" />
@@ -87,7 +87,7 @@
                 </a>
             </li>
             <li class="relative px-6 py-3">
-                <a class="inline-flex items-center w-full text-sm font-light transition-colors duration-150 hover:text-gray-800" href="/dashboard/profile.php">
+                <a class="inline-flex items-center w-full text-sm font-light transition-colors duration-150 hover:text-gray-800" href="{{route('member.profile.profile_index')}}">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="24" height="24" fill="white" />
                         <circle cx="10.5" cy="5.5" r="2.75" stroke="#082431" stroke-width="1.5" />
