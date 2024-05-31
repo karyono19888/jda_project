@@ -12,7 +12,7 @@ class RequestController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.member.requests.index');
     }
 
     /**
@@ -63,8 +63,8 @@ class RequestController extends Controller
         //
     }
 
-    public function approve($id)
+    public function approved($id)
     {
-
+        return view('pages.member.requests.detail');
     }
 }
