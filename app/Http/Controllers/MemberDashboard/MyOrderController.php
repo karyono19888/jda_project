@@ -12,7 +12,7 @@ class MyOrderController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.member.orders.index');
     }
 
     /**
@@ -36,7 +36,7 @@ class MyOrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('pages.member.orders.detail');
     }
 
     /**
@@ -44,7 +44,7 @@ class MyOrderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('pages.member.orders.edit');
     }
 
     /**

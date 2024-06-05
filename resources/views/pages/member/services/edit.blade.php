@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Create Products')
+@section('title','Edit Products')
 
 @section('content')
     <main class="h-full overflow-y-auto">
@@ -8,10 +8,10 @@
             <div class="grid w-full gap-5 px-10 mx-auto md:grid-cols-12">
                 <div class="col-span-12">
                     <h2 class="mt-8 mb-1 text-2xl font-semibold text-gray-700">
-                        Add Your Product
+                        Edit Your Product
                     </h2>
                     <p class="text-sm text-gray-400">
-                        Upload the products you provide
+                        Edit the Products you provide
                     </p>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                     </svg>
                 </li>
                 <li class="flex items-center">
-                    <a href="#" class="font-medium">Add Your Product</a>
+                    <a href="#" class="font-medium">Edit Your Product</a>
                 </li>
             </ol>
         </nav>
@@ -34,7 +34,8 @@
             <div class="grid gap-5 md:grid-cols-12">
                 <main class="col-span-12 p-4 md:pt-0">
                     <div class="px-2 py-2 mt-2 bg-white rounded-xl">
-                        <form action="{{route('member.product.product_store')}}" method="POST">
+                        <form action="{{route('member.product.product_update',1)}}" method="POST">
+                            @method('PUT')
                             @csrf
                             <div class="">
                                 <div class="px-4 py-5 sm:p-6">
@@ -44,54 +45,54 @@
                                             <input placeholder="Product apa yang ingin kamu tawarkan?" type="text" name="title_product" id="title_product" autocomplete="title_product" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
                                         </div>
                                         <div class="col-span-6">
-                                            <label for="descripion_product" class="block mb-3 font-medium text-gray-700 text-md">Deskripsi Product</label>
-                                            <input placeholder="Jelaskan Product apa yang kamu tawarkan?" type="text" name="descripion_product" id="descripion_product" autocomplete="descripion_product" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
+                                            <label for="description_product" class="block mb-3 font-medium text-gray-700 text-md">Deskripsi Product</label>
+                                            <input placeholder="Jelaskan Product apa yang kamu tawarkan?" type="text" name="description_product" id="description_product" autocomplete="description_product" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
                                         </div>
                                         <div class="col-span-6">
                                             <label for="keunggulan_product" class="block mb-2 font-medium text-gray-700 text-md">Keunggulan Product kamu</label>
                                             <p class="block mb-3 text-sm text-gray-700">
                                                 Hal apa aja yang didapakan dari product kamu?
                                             </p>
-                                            <input placeholder="Keunggulan 1" type="text" name="advantages[]" id="keunggulan_product" autocomplete="keunggulan_product" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
-                                            <input placeholder="Keunggulan 2" type="text" name="advantages[]" id="keunggulan_product" autocomplete="keunggulan_product" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
-                                            <input placeholder="Keunggulan 3" type="text" name="advantages[]" id="keunggulan_product" autocomplete="keunggulan_product" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
+                                            <input placeholder="Keunggulan 1" type="text" name="keunggulan_product" id="keunggulan_product" autocomplete="keunggulan_product" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
+                                            <input placeholder="Keunggulan 2" type="text" name="keunggulan_product" id="keunggulan_product" autocomplete="keunggulan_product" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
+                                            <input placeholder="Keunggulan 3" type="text" name="keunggulan_product" id="keunggulan_product" autocomplete="keunggulan_product" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
                                             <div id="newServicesRow"></div>
                                             <button type="button" class="inline-flex justify-center px-3 py-2 mt-3 text-xs font-medium text-gray-700 bg-gray-100 border border-transparent rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" id="addServicesRow">
                                                 Tambahkan Keunggulan +
                                             </button>
                                         </div>
                                         <div class="col-span-6 -mb-6">
-                                            <label for="estimasi_product" class="block mb-3 font-medium text-gray-700 text-md">Estimasi Product & Jumlah Product</label>
+                                            <label for="estimation" class="block mb-3 font-medium text-gray-700 text-md">Estimasi product & Jumlah</label>
                                         </div>
                                         <div class="col-span-6 sm:col-span-3">
-                                            <select id="estimasi_product" name="estimasi_product" autocomplete="estimasi_product" class="block w-full px-3 py-3 pr-10 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            <select id="estimation" name="estimation" autocomplete="estimation" class="block w-full px-3 py-3 pr-10 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                 <option>Butuh Berapa hari product kamu ready?</option>
                                             </select>
                                         </div>
                                         <div class="col-span-6 sm:col-span-3">
                                             <select id="maximal_product" name="maximal_product" autocomplete="maximal_product" class="block w-full px-3 py-3 pr-10 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                                <option>Maksimal Product kamu</option>
+                                                <option>Maksimal Pesan Prodcut kamu</option>
                                             </select>
                                         </div>
                                         <div class="col-span-6">
                                             <label for="price_product" class="block mb-3 font-medium text-gray-700 text-md">Harga Product Kamu</label>
-                                            <input placeholder="Total Harga Service Kamu" type="number" name="price_product" id="price_product" autocomplete="price_product" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
+                                            <input placeholder="Total Harga Product Kamu" type="number" name="price_product" id="price_product" autocomplete="price_product" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
                                         </div>
                                         <div class="col-span-6">
                                             <label for="thumbnail_product" class="block mb-3 font-medium text-gray-700 text-md">Thumbnail Product Feeds</label>
-                                            <input placeholder="Keunggulan 1" type="file" name="thumbnails[]" id="thumbnail_product" autocomplete="thumbnail_product" class="block w-full py-3 pl-5 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
-                                            <input placeholder="Keunggulan 2" type="file" name="thumbnails[]" id="thumbnail_product" autocomplete="thumbnail_product" class="block w-full py-3 pl-5 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
-                                            <input placeholder="Keunggulan 3" type="file" name="thumbnails[]" id="thumbnail_product" autocomplete="thumbnail_product" class="block w-full py-3 pl-5 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
+                                            <input placeholder="Keunggulan 1" type="file" name="thumbnail_product" id="thumbnail_product" autocomplete="thumbnail_product" class="block w-full py-3 pl-5 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
+                                            <input placeholder="Keunggulan 2" type="file" name="thumbnail_product" id="thumbnail_product" autocomplete="thumbnail_product" class="block w-full py-3 pl-5 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
+                                            <input placeholder="Keunggulan 3" type="file" name="thumbnail_product" id="thumbnail_product" autocomplete="thumbnail_product" class="block w-full py-3 pl-5 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
                                             <div id="newThumbnailRow"></div>
                                             <button type="button" class="inline-flex justify-center px-3 py-2 mt-3 text-xs font-medium text-gray-700 bg-gray-100 border border-transparent rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" id="addThumbnailRow">
                                                 Tambahkan Gambar +
                                             </button>
                                         </div>
                                         <div class="col-span-6">
-                                            <label for="keunggulan_order" class="block mb-3 font-medium text-gray-700 text-md">Keunggulan Order dengan Kamu</label>
-                                            <input placeholder="Keunggulan 1" type="text" name="keunggulan_order[]" id="keunggulan_order" autocomplete="keunggulan_order" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
-                                            <input placeholder="Keunggulan 2" type="text" name="keunggulan_order[]" id="keunggulan_order" autocomplete="keunggulan_order" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
-                                            <input placeholder="Keunggulan 3" type="text" name="keunggulan_order[]" id="keunggulan_order" autocomplete="keunggulan_order" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
+                                            <label for="keunggulan" class="block mb-3 font-medium text-gray-700 text-md">Keunggulan kamu</label>
+                                            <input placeholder="Keunggulan 1" type="text" name="keunggulan" id="keunggulan" autocomplete="keunggulan" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
+                                            <input placeholder="Keunggulan 2" type="text" name="keunggulan" id="keunggulan" autocomplete="keunggulan" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
+                                            <input placeholder="Keunggulan 3" type="text" name="keunggulan" id="keunggulan" autocomplete="keunggulan" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
                                             <div id="newAdvantagesRow"></div>
                                             <button type="button" class="inline-flex justify-center px-3 py-2 mt-3 text-xs font-medium text-gray-700 bg-gray-100 border border-transparent rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" id="addAdvantagesRow">
                                                 Tambahkan Keunggulan +
@@ -115,7 +116,7 @@
                                         Cancel
                                     </a>
                                     <button type="submit" class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-green-600 border border-transparent rounded-lg shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                                        Create Product
+                                        Save Changes
                                     </button>
                                 </div>
                             </div>
@@ -128,7 +129,7 @@
 @endsection
 
 @push('after-script-dashboard')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{url("https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")}}"></script>
     <script type="text/javascript">
         // add row
         $("#addAdvantagesRow").click(function() {

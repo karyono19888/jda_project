@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','My Product')
+@section('title','My request')
 
 @section('content')
     <main class="h-full overflow-y-auto">
@@ -8,18 +8,14 @@
             <div class="grid w-full gap-5 px-10 mx-auto md:grid-cols-12">
                 <div class="col-span-8">
                     <h2 class="mt-8 mb-1 text-2xl font-semibold text-gray-700">
-                        My Product
+                        My Requests
                     </h2>
                     <p class="text-sm text-gray-400">
-                        3 Total Product
+                        3 Total Requests
                     </p>
                 </div>
                 <div class="col-span-4 lg:text-right">
-                    <div class="relative mt-0 md:mt-6">
-                        <a href="{{route('member.product.product_create')}}" class="inline-block px-4 py-2 mt-2 text-left text-white rounded-xl bg-serv-button">
-                            + Add Product
-                        </a>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -30,8 +26,8 @@
                         <table class="w-full" aria-label="Table">
                             <thead>
                                 <tr class="text-sm font-normal text-left text-gray-900 border-b border-b-gray-600">
+                                    <th class="py-4" scope="">Seller Name</th>
                                     <th class="py-4" scope="">Product Details</th>
-                                    <th class="py-4" scope="">Role</th>
                                     <th class="py-4" scope="">Price</th>
                                     <th class="py-4" scope="">Status</th>
                                     <th class="py-4" scope="">Action</th>
@@ -39,6 +35,18 @@
                             </thead>
                             <tbody class="bg-white">
                                 <tr class="text-gray-700 border-b">
+                                    <td class="px-1 py-5 text-sm w-2/8">
+                                        <div class="flex items-center text-sm">
+                                            <div class="relative w-10 h-10 mr-3 rounded-full md:block">
+                                                <img class="object-cover w-full h-full rounded-full" src="https://randomuser.me/api/portraits/men/6.jpg" alt="" loading="lazy" />
+                                                <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                                            </div>
+                                            <div>
+                                                <p class="font-medium text-black">Alexa Sara</p>
+                                                <p class="text-sm text-gray-400">UI Designer</p>
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td class="w-2/6 px-1 py-5">
                                         <div class="flex items-center text-sm">
                                             <div class="relative w-10 h-10 mr-3 rounded-full md:block">
@@ -46,24 +54,21 @@
                                                 <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                                             </div>
                                             <div>
-                                                <a href="/dashboard/services/details.php" class="font-medium text-black">
+                                                <p class="font-medium text-black">
                                                     Design WordPress <br>E-Commerce Modules
-                                                </a>
+                                                </p>
                                             </div>
                                         </div>
-                                    </td>
-                                    <td class="px-1 py-5 text-sm">
-                                        Website Developer
                                     </td>
                                     <td class="px-1 py-5 text-sm">
                                         Rp120.000
                                     </td>
                                     <td class="px-1 py-5 text-sm text-green-500 text-md">
-                                        Active
+                                        Approved
                                     </td>
                                     <td class="px-1 py-5 text-sm">
-                                        <a href="{{route('member.product.product_edit',1)}}" class="px-4 py-2 mt-2 text-left text-white rounded-xl bg-serv-email">
-                                            Edit Product
+                                        <a href="{{route('member.request.approved',1)}}" class="px-4 py-2 mt-2 text-left text-white rounded-xl bg-serv-email">
+                                            Details
                                         </a>
                                     </td>
                                 </tr>
@@ -75,3 +80,7 @@
         </section>
     </main>
 @endsection
+
+@push('after-script-dashboard')
+   
+@endpush
